@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TestDoublesAtWork
+﻿namespace TableBooking
 {
     public class TableBookingService
     {
@@ -27,10 +25,10 @@ namespace TestDoublesAtWork
 
             var freeTable = _tableRepository.GetNextFreeTable(bookingRequest.NumberOfPersons,
                 bookingRequest.BookingDateAndTime);
-            freeTable.ReserveFor(bookingRequest.NumberOfPersons, bookingRequest.BookingDateAndTime);
+            freeTable.ReserveFor(bookingRequest.NumberOfPersons, bookingRequest.BookingDateAndTime, bookingRequest.GenerateReservationNumber());
             _tableRepository.Save(freeTable);
 
-            _notificationService.SendNotification(bookingRequest.CustomerEmail);
+            _notificationService.SendReservationNotification(bookingRequest.CustomerEmail, bookingRequest.GenerateConfirmationText());
 
             return BookingResult.Succeed(freeTable.TableNumber);
         }

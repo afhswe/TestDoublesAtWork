@@ -1,4 +1,4 @@
-﻿namespace TestDoublesAtWork
+﻿namespace TableBooking
 {
     public class BookingResult
     {

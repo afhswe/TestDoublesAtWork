@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestDoublesAtWork
+namespace TableBooking
 {
     public interface ITableRepository
     {
